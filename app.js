@@ -421,6 +421,7 @@ let qAnswers = {};
 function go(name) {
   document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
   document.getElementById("screen-" + name).classList.add("active");
+  document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
 }
 
 function toast(msg) {
@@ -457,7 +458,7 @@ function notesIcon() {
 }
 
 function checkIcon() {
-  return `<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12zm-1.271-7.312l6.677-7.045a1 1 0 10-1.45-1.376l-5.926 6.25-1.975-2.242a1 1 0 00-1.5 1.321l2.697 3.065a.999.999 0 00.746.339h.005c.274 0 .537-.113.726-.312z"/></svg>`;
+  return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 7"/></svg>`;
 }
 
 function renderHome() {
@@ -789,9 +790,79 @@ function finishForm() {
   renderHome();
 }
 
-document.querySelectorAll(".tab").forEach((tab) => {
-  tab.addEventListener("click", () => go(tab.dataset.tab === "settings" ? "settings" : "home"));
+const TAB_ICONS = {
+  home: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>',
+  info: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2 12C2 6.473 6.473 2 12 2s10 4.473 10 10-4.473 10-10 10S2 17.527 2 12zm2 0c0 4.663 3.336 8 8 8 4.663 0 8-3.336 8-8 0-4.663-3.336-8-8-8-4.663 0-8 3.336-8 8zm6.5-3.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM11 12a1 1 0 112 0v4a1 1 0 11-2 0v-4z"/></svg>',
+  settings:
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1-.1a1.7 1.7 0 0 0-.3 1.8V9c.2.6.8 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>',
+};
+
+function tabbarHtml(active) {
+  return ["home", "info", "settings"]
+    .map((id) => {
+      const label = id === "home" ? "The Guide" : id === "info" ? "Information" : "Settings";
+      return `<button class="tab${active === id ? " active" : ""}" data-tab="${id}">${TAB_ICONS[id]}${label}</button>`;
+    })
+    .join("");
+}
+
+document.querySelectorAll("[data-tabbar]").forEach((el) => {
+  el.innerHTML = tabbarHtml(el.dataset.tabbar);
 });
+
+document.body.addEventListener("click", (e) => {
+  const tab = e.target.closest(".tab");
+  if (!tab) return;
+  go(tab.dataset.tab);
+});
+
+const FAQS = [
+  {
+    q: "What is PROMIS?",
+    a: "<p>PROMIS (Patient-Reported Outcomes Measurement Information System) is a set of short, validated questionnaires about how you feel and function. LotusPROMIS-10 uses 10 commonly used domains.</p>",
+  },
+  {
+    q: "Which domains are included?",
+    a: "<p>Physical Function, Pain Intensity, Pain Interference, Fatigue, Sleep Disturbance, Sleep-Related Impairment, Anxiety, Depression, Cognitive Function, and Ability to Participate in Social Roles &amp; Activities.</p>",
+  },
+  {
+    q: "Why do surveys unlock in groups?",
+    a: "<p>The Guide only shows the next group once you finish the current one — for example physical health, then energy and sleep. That matches how LotusLab schedules activities, rather than listing everything at once.</p>",
+  },
+  {
+    q: "How long does each survey take?",
+    a: "<p>Most domains are 4 short items and take about 1–2 minutes. You will see 2 questions on a screen. Optional photo, video, or PDF uploads can be skipped.</p>",
+  },
+  {
+    q: "What is the milestone page?",
+    a: "<p>The last page of each survey is a milestone. It shows how many of the 10 domains you have finished and which surveys are coming next. Press <strong>Finish</strong> to save and return to The Guide.</p>",
+  },
+  {
+    q: "Who sees my answers?",
+    a: "<p>Your responses are for your LotusLab care team. Uploads such as a clinic letter or photo are optional and only shared if you add them.</p>",
+  },
+  {
+    q: "What if I feel distressed?",
+    a: "<p>There are no right or wrong answers. If the emotional health questions are upsetting, pause and talk with your care team, or use your usual support contacts.</p>",
+  },
+];
+
+function renderFaqs() {
+  const mount = document.getElementById("faqMount");
+  if (!mount) return;
+  mount.innerHTML = FAQS.map(
+    (item, i) => `
+      <article class="faq" data-faq="${i}">
+        <button type="button" class="faq-q">${item.q}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="faq-a">${item.a}</div>
+      </article>`
+  ).join("");
+  mount.querySelectorAll(".faq-q").forEach((btn) => {
+    btn.addEventListener("click", () => btn.parentElement.classList.toggle("open"));
+  });
+}
 
 document.getElementById("qExit").addEventListener("click", () => {
   persistProgress();
@@ -829,4 +900,5 @@ document.getElementById("todayLabel").textContent = `Today ${String(now.getDate(
   now.getMonth() + 1
 ).padStart(2, "0")}/${now.getFullYear()}`;
 
+renderFaqs();
 renderHome();

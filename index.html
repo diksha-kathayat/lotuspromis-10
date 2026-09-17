@@ -250,8 +250,8 @@
       }
 
       .chip.notes {
-        background: #ece9f8;
-        color: #5b67c7;
+        background: #eff6ff;
+        color: #3b82f6;
       }
 
       .chip.ok {
@@ -344,7 +344,7 @@
         font-size: 11px;
         font-weight: 500;
         cursor: pointer;
-        min-width: 72px;
+        min-width: 64px;
         padding-top: 4px;
         font-family: inherit;
       }
@@ -845,7 +845,7 @@
       }
 
       .settings-main {
-        padding: calc(var(--status-h) + 8px) var(--pad) calc(var(--tabbar-h) + 28px);
+        padding: calc(var(--status-h) + 8px) var(--pad) 12px;
       }
 
       .settings-main h1 {
@@ -857,6 +857,110 @@
         display: flex;
         justify-content: space-between;
         padding: 16px 0;
+        border-bottom: 1px solid var(--line);
+        font-weight: 500;
+      }
+
+      .info-main {
+        padding: calc(var(--status-h) + 8px) var(--pad) 20px;
+      }
+
+      .info-main h1 {
+        font-size: 1.8rem;
+        margin: 8px 0 6px;
+        color: var(--heading);
+      }
+
+      .info-main .info-sub {
+        color: var(--muted);
+        margin: 0 0 18px;
+        font-size: 0.95rem;
+      }
+
+      .program-info-card {
+        background: #f4fafb;
+        border: 1px solid #d7eef2;
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 22px;
+      }
+
+      .program-info-card h2 {
+        font-size: 1.05rem;
+        margin: 0 0 8px;
+        color: var(--heading);
+      }
+
+      .program-info-card p,
+      .program-info-card li {
+        color: var(--text);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0 0 8px;
+      }
+
+      .program-info-card ul {
+        margin: 0;
+        padding-left: 1.15rem;
+      }
+
+      .faq-heading {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--heading);
+        margin: 8px 0 4px;
+      }
+
+      .faq {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .faq-q {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px 0;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        font: inherit;
+        font-weight: 600;
+        color: #1e293b;
+        cursor: pointer;
+      }
+
+      .faq-q svg {
+        flex-shrink: 0;
+        color: #94a3b8;
+        transition: transform 0.2s ease;
+      }
+
+      .faq.open .faq-q svg {
+        transform: rotate(90deg);
+        color: var(--heading);
+      }
+
+      .faq-a {
+        display: none;
+        padding: 0 0 16px;
+        color: var(--text);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      .faq.open .faq-a {
+        display: block;
+      }
+
+      .faq-a p {
+        margin: 0 0 10px;
+      }
+
+      .faq-a p:last-child {
+        margin-bottom: 0;
+      }
         border-bottom: 1px solid var(--line);
         font-weight: 500;
       }
@@ -932,16 +1036,30 @@
             </main>
           </div>
           <p class="join-footer">Join additional program? Click <a href="#" id="joinLink">here</a></p>
-          <nav class="tabbar">
-            <button class="tab active" data-tab="home">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
-              The Guide
-            </button>
-            <button class="tab" data-tab="settings">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.2.6.8 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
-              Settings
-            </button>
-          </nav>
+          <nav class="tabbar" data-tabbar="home"></nav>
+        </section>
+
+
+        <section class="screen" data-screen="info" id="screen-info">
+          <div class="ion-content">
+            <main class="info-main">
+              <h1>Information</h1>
+              <p class="info-sub">LotusPROMIS-10 · LotusLab</p>
+              <section class="program-info-card html-block">
+                <h2>About this program</h2>
+                <p>LotusPROMIS-10 collects a short snapshot of how you are feeling and functioning, using 10 widely used PROMIS domains.</p>
+                <ul>
+                  <li>Surveys appear on <strong>The Guide</strong> in small groups.</li>
+                  <li>Finish a group and the next group unlocks.</li>
+                  <li>Each survey ends on a <strong>milestone</strong> page so you can see what is coming next.</li>
+                </ul>
+                <p>Answers help your care team understand physical, sleep, emotional, thinking, and social health over time. There are no right or wrong answers.</p>
+              </section>
+              <h2 class="faq-heading">FAQs</h2>
+              <div id="faqMount"></div>
+            </main>
+          </div>
+          <nav class="tabbar" data-tabbar="info"></nav>
         </section>
 
         <section class="screen" data-screen="settings" id="screen-settings">
@@ -958,16 +1076,7 @@
               <button class="btn ghost" id="resetBtn" type="button">Reset LotusPROMIS-10 demo</button>
             </main>
           </div>
-          <nav class="tabbar">
-            <button class="tab" data-tab="home">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
-              The Guide
-            </button>
-            <button class="tab active" data-tab="settings">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.2.6.8 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
-              Settings
-            </button>
-          </nav>
+          <nav class="tabbar" data-tabbar="settings"></nav>
         </section>
 
         <section class="screen" data-screen="questionnaire" id="screen-questionnaire">
