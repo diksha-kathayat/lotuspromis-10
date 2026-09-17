@@ -173,7 +173,7 @@
       }
 
       .guide-main {
-        padding: calc(var(--status-h) + 8px) var(--pad) calc(var(--tabbar-h) + 28px);
+        padding: calc(var(--status-h) + 8px) var(--pad) 12px;
       }
 
       .logo {
@@ -209,10 +209,10 @@
       .cluster-label {
         font-size: 0.8rem;
         font-weight: 600;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
         color: var(--primary);
-        margin: 6px 0 10px;
+        margin: 8px 0 10px;
       }
 
       .cluster-blurb {
@@ -251,12 +251,16 @@
 
       .chip.notes {
         background: #ece9f8;
-        color: #6d5cae;
+        color: #5b67c7;
       }
 
       .chip.ok {
-        background: var(--success-bg);
-        color: var(--success);
+        background: #f0fdf4;
+        color: #16a34a;
+      }
+
+      .chip svg {
+        display: block;
       }
 
       .task-copy {
@@ -292,28 +296,32 @@
         flex-shrink: 0;
       }
 
-      .pill.continue {
-        background: #d7ecf8;
-        color: #2b6cb0;
+      .pill.start {
+        background: #008294;
+        color: #fff;
       }
 
-      .join {
+      .join-footer {
+        flex-shrink: 0;
         text-align: center;
-        margin: 36px 0 12px;
+        padding: 10px var(--pad) 12px;
         color: var(--heading);
         font-size: 0.95rem;
+        background: var(--white);
       }
 
-      .join a {
+      .join-footer a {
         color: var(--heading);
         font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 2px;
       }
 
       .tabbar {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
         height: calc(var(--tabbar-h) + var(--home-indicator-h));
         padding: 8px 24px var(--home-indicator-h);
         display: flex;
@@ -322,6 +330,7 @@
         background: var(--white);
         border-top: 1px solid var(--line);
         z-index: 20;
+        flex-shrink: 0;
       }
 
       .tab {
@@ -423,14 +432,16 @@
       }
 
       .html-block h1 {
-        font-size: 1.45rem;
+        font-size: 1.55rem;
         margin: 0 0 10px;
         color: var(--heading);
+        letter-spacing: -0.02em;
+        line-height: 1.2;
       }
 
       .html-block h2 {
-        font-size: 1.05rem;
-        margin: 18px 0 8px;
+        font-size: 0.95rem;
+        margin: 0 0 8px;
         color: var(--heading);
       }
 
@@ -441,13 +452,165 @@
         font-size: 0.98rem;
       }
 
+      .html-block .lead {
+        font-size: 1.02rem;
+        margin: 0 0 14px;
+      }
+
       .html-block ul {
         padding-left: 1.15rem;
-        margin: 0 0 12px;
+        margin: 0;
       }
 
       .html-block li {
-        margin: 0 0 6px;
+        margin: 0 0 8px;
+      }
+
+      .html-block .kicker {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--primary);
+        margin-bottom: 8px;
+      }
+
+      .html-block .stat-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 0 0 16px;
+      }
+
+      .html-block .stat {
+        background: #f4fafb;
+        border: 1px solid #d7eef2;
+        border-radius: 14px;
+        padding: 12px 14px;
+      }
+
+      .html-block .stat b {
+        display: block;
+        color: var(--primary);
+        font-size: 1.05rem;
+        margin-bottom: 2px;
+      }
+
+      .html-block .stat span {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .html-block .callout {
+        background: #edf5ff;
+        border-left: 4px solid var(--primary);
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin: 0 0 14px;
+      }
+
+      .html-block .tip {
+        background: #f8f5ff;
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: var(--heading);
+        font-size: 0.92rem;
+      }
+
+      .html-block .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 12px;
+      }
+
+      .html-block .time-chip {
+        display: inline-flex;
+        align-items: center;
+        background: #ece9f8;
+        color: var(--heading);
+        border-radius: 99px;
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+
+      .q-item {
+        margin: 0 0 22px;
+        padding: 0 0 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .q-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .q-item .q-title {
+        font-size: 1.05rem;
+        margin-bottom: 10px;
+      }
+
+      .optional-tag {
+        display: inline-block;
+        margin-left: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--primary);
+        background: #edf5ff;
+        border-radius: 99px;
+        padding: 2px 8px;
+        vertical-align: middle;
+      }
+
+      .upload-card {
+        border: 1.5px dashed #b7d3dc;
+        background: #f7fbfc;
+        border-radius: 16px;
+        padding: 18px 14px;
+        text-align: center;
+      }
+
+      .upload-card p {
+        margin: 8px 0 12px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .upload-card .file-name {
+        color: var(--heading);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .preview-img,
+      .preview-video {
+        width: 100%;
+        max-height: 180px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        background: #e2e8f0;
+      }
+
+      .text-input,
+      .text-area {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 12px 14px;
+        font: inherit;
+        color: #1e293b;
+        background: #fff;
+      }
+
+      .text-area {
+        min-height: 88px;
+        resize: vertical;
       }
 
       .choices {
@@ -766,9 +929,9 @@
               <div id="pendingMount"></div>
               <h2 class="section">Completed Activities</h2>
               <div id="completedMount"></div>
-              <p class="join">Join additional program? Click <a href="#" id="joinLink">here</a></p>
             </main>
           </div>
+          <p class="join-footer">Join additional program? Click <a href="#" id="joinLink">here</a></p>
           <nav class="tabbar">
             <button class="tab active" data-tab="home">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
@@ -830,659 +993,12 @@
           </div>
         </section>
 
-        <section class="screen" data-screen="milestone" id="screen-milestone">
-          <div class="ion-content">
-            <main class="milestone" id="milestoneMount"></main>
-          </div>
-          <div class="q-footer">
-            <button class="btn primary" id="msDone" type="button">Continue</button>
-          </div>
-        </section>
         <div class="home-indicator"></div>
         <div class="toast" id="toast"></div>
       </div>
     </div>
 
-    <script>
-      const SCALES = {
-        physicalFunction: [
-          "Without any difficulty",
-          "With a little difficulty",
-          "With some difficulty",
-          "With much difficulty",
-          "Unable to do",
-        ],
-        frequency: ["Never", "Rarely", "Sometimes", "Often", "Always"],
-        intensity: ["Not at all", "A little bit", "Somewhat", "Quite a bit", "Very much"],
-        sleepQuality: ["Very poor", "Poor", "Fair", "Good", "Very good"],
-        socialRoles: ["Never", "Rarely", "Sometimes", "Usually", "Always"],
-      };
+    <script src="./app.js"></script>
 
-      const CLUSTERS = [
-        { id: "intro", name: "Getting started", blurb: "A short welcome before your first PROMIS domains.", surveys: ["welcome"] },
-        {
-          id: "physical",
-          name: "Physical health",
-          blurb: "How your body is working, including pain.",
-          surveys: ["physical-function", "pain-intensity", "pain-interference"],
-        },
-        {
-          id: "energy",
-          name: "Energy & sleep",
-          blurb: "Tiredness and how sleep is affecting your days.",
-          surveys: ["fatigue", "sleep-disturbance", "sleep-impairment"],
-        },
-        { id: "emotion", name: "Emotional health", blurb: "Anxiety and low mood over the past 7 days.", surveys: ["anxiety", "depression"] },
-        {
-          id: "life",
-          name: "Thinking & social life",
-          blurb: "Concentration, memory, and taking part in roles and activities.",
-          surveys: ["cognitive", "social-roles"],
-        },
-      ];
-
-      const SURVEYS = {
-        welcome: {
-          title: "Welcome to LotusPROMIS-10",
-          domain: false,
-          steps: [
-            {
-              type: "info",
-              title: "Welcome",
-              html: `<h1>Welcome to LotusPROMIS-10</h1>
-                <p>This program collects a short snapshot of how you are feeling and functioning, using 10 widely used PROMIS domains.</p>
-                <h2>How it works</h2>
-                <ul>
-                  <li>Surveys appear on <strong>The Guide</strong> in groups that belong together.</li>
-                  <li>Finish a group and the next group unlocks.</li>
-                  <li>After every survey you will see a <strong>milestone</strong> with your progress and what is coming next.</li>
-                </ul>
-                <p>Most domains take about <strong>1–2 minutes</strong>. There are no right or wrong answers.</p>`,
-            },
-            {
-              type: "single",
-              title: "Are you ready to start LotusPROMIS-10?",
-              options: ["Yes, let’s begin", "I understand — start when I’m ready"],
-            },
-          ],
-        },
-        "physical-function": {
-          title: "Physical Function",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Physical Function</h1>
-                <p>These questions ask about your ability to carry out everyday physical activities.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>There is <strong>no 7-day time window</strong> for this domain — answer based on how you are now.</li>
-                  <li>If ability varies, choose the option that best matches a typical day.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "Are you able to do chores such as vacuuming or yard work?", scale: "physicalFunction" },
-            { type: "single", title: "Are you able to go up and down stairs at a normal pace?", scale: "physicalFunction" },
-            { type: "single", title: "Are you able to go for a walk of at least 15 minutes?", scale: "physicalFunction" },
-            { type: "single", title: "Are you able to run errands and shop?", scale: "physicalFunction" },
-          ],
-        },
-        "pain-intensity": {
-          title: "Pain Intensity",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Pain Intensity</h1>
-                <p>A single 0–10 rating of pain, matching the PROMIS pain intensity item used in PROMIS profile instruments.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li><strong>0</strong> means no pain. <strong>10</strong> means the worst pain imaginable.</li>
-                </ul>
-                <p>1 question · under 1 minute</p>`,
-            },
-            {
-              type: "slider",
-              title: "In the past 7 days, how would you rate your pain on average?",
-              min: 0,
-              max: 10,
-              minLabel: "No pain",
-              maxLabel: "Worst imaginable pain",
-            },
-          ],
-        },
-        "pain-interference": {
-          title: "Pain Interference",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Pain Interference</h1>
-                <p>These questions ask how much pain got in the way of daily life.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>If you had no pain, choose <strong>Not at all</strong>.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, how much did pain interfere with your day to day activities?", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, how much did pain interfere with work around the home?", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, how much did pain interfere with your ability to participate in social activities?", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, how much did pain interfere with your household chores?", scale: "intensity" },
-          ],
-        },
-        fatigue: {
-          title: "Fatigue",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Fatigue</h1>
-                <p>These questions ask about tiredness and feeling worn out — not only sleepiness.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>Include both how often and how strongly fatigue showed up.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, I feel fatigued", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I have trouble starting things because I am tired", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, how run-down did you feel on average?", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, how fatigued were you on average?", scale: "intensity" },
-          ],
-        },
-        "sleep-disturbance": {
-          title: "Sleep Disturbance",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Sleep Disturbance</h1>
-                <p>These questions ask about the <em>quality</em> of your sleep — falling asleep, staying asleep, and how refreshing sleep felt.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>Answer about sleep itself, not daytime sleepiness (that is the next survey).</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, my sleep quality was", scale: "sleepQuality" },
-            { type: "single", title: "In the past 7 days, my sleep was refreshing", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I had a problem with my sleep", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I had difficulty falling asleep", scale: "frequency" },
-          ],
-        },
-        "sleep-impairment": {
-          title: "Sleep-Related Impairment",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Sleep-Related Impairment</h1>
-                <p>These questions ask how sleep (or lack of it) affected your daytime functioning.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>Focus on daytime effects: concentration, irritability, getting things done.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, I had a hard time getting things done because I was sleepy", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I had problems during the day because of poor sleep", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I had a hard time concentrating because of poor sleep", scale: "intensity" },
-            { type: "single", title: "In the past 7 days, I felt irritable because of poor sleep", scale: "intensity" },
-          ],
-        },
-        anxiety: {
-          title: "Anxiety",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Anxiety</h1>
-                <p>These questions ask about fear, worry, and feeling on edge.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>Choose how often each statement was true for you.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, I felt fearful", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I found it hard to focus on anything other than my anxiety", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, my worries overwhelmed me", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I felt uneasy", scale: "frequency" },
-          ],
-        },
-        depression: {
-          title: "Depression",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Depression</h1>
-                <p>These questions ask about low mood, hopelessness, and feeling down.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>There are no right or wrong answers. If you are in distress, talk with your care team.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, I felt worthless", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I felt helpless", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I felt depressed", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I felt hopeless", scale: "frequency" },
-          ],
-        },
-        cognitive: {
-          title: "Cognitive Function",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Cognitive Function / Cognitive Concerns</h1>
-                <p>These questions ask about thinking, memory, concentration, and keeping track of what you are doing.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li>Answer about everyday thinking, not a formal memory test.</li>
-                </ul>
-                <p>4 questions · about 1 minute</p>`,
-            },
-            { type: "single", title: "In the past 7 days, my thinking has been slow", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, it has seemed like my brain was not working as well as usual", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I have had to work harder than usual to keep track of what I was doing", scale: "frequency" },
-            { type: "single", title: "In the past 7 days, I have had trouble shifting back and forth between different activities that require thinking", scale: "frequency" },
-          ],
-        },
-        "social-roles": {
-          title: "Social Roles & Activities",
-          domain: true,
-          steps: [
-            {
-              type: "info",
-              title: "About this survey",
-              html: `<h1>Ability to Participate in Social Roles &amp; Activities</h1>
-                <p>These questions ask whether you could take part in family, work, leisure, and time with friends.</p>
-                <h2>How to answer</h2>
-                <ul>
-                  <li>Think about the <strong>past 7 days</strong>.</li>
-                  <li><strong>Never</strong> having trouble means you could do these activities as you wanted.</li>
-                </ul>
-                <p>4 questions · about 1 minute · last domain in LotusPROMIS-10</p>`,
-            },
-            { type: "single", title: "I have trouble doing all of my regular leisure activities with others", scale: "socialRoles" },
-            { type: "single", title: "I have trouble doing all of the family activities that I want to do", scale: "socialRoles" },
-            { type: "single", title: "I have trouble doing all of my usual work (include work at home)", scale: "socialRoles" },
-            { type: "single", title: "I have trouble doing all of the activities with friends that I want to do", scale: "socialRoles" },
-          ],
-        },
-      };
-
-      const KEY = "lotuspromis10-state";
-      const DOMAIN_IDS = Object.keys(SURVEYS).filter((id) => SURVEYS[id].domain);
-
-      function loadState() {
-        try {
-          return JSON.parse(localStorage.getItem(KEY)) || { completed: {}, progress: {} };
-        } catch {
-          return { completed: {}, progress: {} };
-        }
-      }
-
-      function saveState() {
-        localStorage.setItem(KEY, JSON.stringify(state));
-      }
-
-      let state = loadState();
-      let qId = null;
-      let qStep = 0;
-      let qViewOnly = false;
-      let qAnswers = {};
-
-      function go(name) {
-        document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
-        document.getElementById("screen-" + name).classList.add("active");
-      }
-
-      function toast(msg) {
-        const el = document.getElementById("toast");
-        el.textContent = msg;
-        el.classList.add("show");
-        setTimeout(() => el.classList.remove("show"), 2200);
-      }
-
-      function formatDisplay(iso) {
-        const d = iso ? new Date(iso) : new Date();
-        if (Number.isNaN(d.getTime())) return iso;
-        const pad = (n) => String(n).padStart(2, "0");
-        const h = d.getHours();
-        const ampm = h >= 12 ? "PM" : "AM";
-        const hr = h % 12 || 12;
-        return `${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()} ${hr}:${pad(d.getMinutes())} ${ampm}`;
-      }
-
-      function isDone(id) {
-        return Boolean(state.completed[id]);
-      }
-
-      function clusterComplete(cluster) {
-        return cluster.surveys.every(isDone);
-      }
-
-      function activeCluster() {
-        return CLUSTERS.find((c) => !clusterComplete(c)) || null;
-      }
-
-      function notesIcon() {
-        return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 7h8M8 12h8M8 17h5"/><rect x="4" y="3" width="16" height="18" rx="3"/></svg>`;
-      }
-
-      function checkIcon() {
-        return `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>`;
-      }
-
-      function renderHome() {
-        const pending = document.getElementById("pendingMount");
-        const completed = document.getElementById("completedMount");
-        const current = activeCluster();
-
-        if (!current) {
-          pending.innerHTML = `<div class="empty">You’re all caught up.<br/>LotusPROMIS-10 is complete.</div>`;
-        } else {
-          const remaining = current.surveys.filter((id) => !isDone(id));
-          pending.innerHTML = `
-            <div class="cluster-label">${current.name}</div>
-            <p class="cluster-blurb">${current.blurb}</p>
-            <ul class="task-list">
-              ${remaining
-                .map((id) => {
-                  const inProgress = state.progress[id];
-                  return `<li>
-                    <div class="chip notes">${notesIcon()}</div>
-                    <div class="task-copy"><h3>${SURVEYS[id].title}</h3></div>
-                    <button class="pill continue" data-open="${id}">${inProgress ? "Continue" : "Start"}</button>
-                  </li>`;
-                })
-                .join("")}
-            </ul>`;
-        }
-
-        const doneIds = Object.keys(state.completed).sort((a, b) => {
-          const ta = new Date(state.completed[a].at).getTime();
-          const tb = new Date(state.completed[b].at).getTime();
-          if (Number.isNaN(ta) || Number.isNaN(tb)) return 0;
-          return tb - ta;
-        });
-        if (!doneIds.length) {
-          completed.innerHTML = `<p class="cluster-blurb">Completed surveys will appear here.</p>`;
-        } else {
-          completed.innerHTML = `<ul class="task-list">${doneIds
-            .map(
-              (id) => `<li>
-                <div class="chip ok">${checkIcon()}</div>
-                <div class="task-copy">
-                  <h3>${SURVEYS[id].title}</h3>
-                  <p>${formatDisplay(state.completed[id].at)}</p>
-                </div>
-                <button class="pill" data-view="${id}">View</button>
-              </li>`
-            )
-            .join("")}</ul>`;
-        }
-
-        pending.querySelectorAll("[data-open]").forEach((btn) =>
-          btn.addEventListener("click", () => openForm(btn.dataset.open, false))
-        );
-        completed.querySelectorAll("[data-view]").forEach((btn) =>
-          btn.addEventListener("click", () => openForm(btn.dataset.view, true))
-        );
-      }
-
-      function openForm(id, viewOnly) {
-        qId = id;
-        qViewOnly = viewOnly;
-        qAnswers = viewOnly ? { ...(state.completed[id]?.answers || {}) } : { ...(state.progress[id]?.answers || {}) };
-        qStep = viewOnly ? 0 : state.progress[id]?.step || 0;
-        document.getElementById("qFormTitle").textContent = SURVEYS[id].title;
-        go("questionnaire");
-        renderQuestion();
-      }
-
-      function currentStep() {
-        return SURVEYS[qId].steps[qStep];
-      }
-
-      function optionsFor(step) {
-        return step.options || SCALES[step.scale] || [];
-      }
-
-      function persistProgress() {
-        if (qViewOnly) return;
-        state.progress[qId] = { step: qStep, answers: qAnswers };
-        saveState();
-      }
-
-      function canAdvance() {
-        const step = currentStep();
-        if (qViewOnly || step.type === "info") return true;
-        return qAnswers[qStep] !== undefined && qAnswers[qStep] !== null && qAnswers[qStep] !== "";
-      }
-
-      function renderQuestion() {
-        const form = SURVEYS[qId];
-        const step = currentStep();
-        const total = form.steps.length;
-        document.getElementById("qProgressBar").style.width = Math.round(((qStep + 1) / total) * 100) + "%";
-        document.getElementById("qStepLabel").textContent = `Question ${qStep + 1} of ${total}`;
-        const titleEl = document.getElementById("qQuestionTitle");
-        titleEl.textContent = step.type === "info" ? "" : step.title;
-        titleEl.style.display = step.type === "info" ? "none" : "block";
-        const body = document.getElementById("qBody");
-        body.innerHTML = "";
-
-        if (step.type === "info") {
-          const wrap = document.createElement("div");
-          wrap.className = "html-block";
-          wrap.innerHTML = step.html;
-          body.appendChild(wrap);
-        } else if (step.type === "single") {
-          const wrap = document.createElement("div");
-          wrap.className = "choices";
-          optionsFor(step).forEach((opt, i) => {
-            const btn = document.createElement("button");
-            btn.type = "button";
-            btn.className = "choice" + (qAnswers[qStep] === i ? " selected" : "");
-            btn.innerHTML = `<span class="radio"></span><span>${opt}</span>`;
-            if (!qViewOnly) {
-              btn.addEventListener("click", () => {
-                qAnswers[qStep] = i;
-                persistProgress();
-                renderQuestion();
-              });
-            }
-            wrap.appendChild(btn);
-          });
-          body.appendChild(wrap);
-        } else if (step.type === "slider") {
-          const val = qAnswers[qStep] ?? 0;
-          const card = document.createElement("div");
-          card.className = "slider-card";
-          card.innerHTML = `
-            <div class="slider-value" id="sliderVal">${val}</div>
-            <input id="painRange" type="range" min="${step.min}" max="${step.max}" step="1" value="${val}" ${qViewOnly ? "disabled" : ""} />
-            <div class="slider-labels"><span>${step.minLabel}</span><span>${step.maxLabel}</span></div>`;
-          body.appendChild(card);
-          const input = card.querySelector("#painRange");
-          qAnswers[qStep] = Number(input.value);
-          input.addEventListener("input", () => {
-            qAnswers[qStep] = Number(input.value);
-            card.querySelector("#sliderVal").textContent = input.value;
-            persistProgress();
-          });
-        }
-
-        const isFirst = qStep === 0;
-        const isLast = qStep === total - 1;
-        document.getElementById("qPrev").hidden = isFirst;
-        document.getElementById("qNext").hidden = isLast;
-        document.getElementById("qFinish").hidden = !isLast;
-        document.getElementById("qFinish").textContent = qViewOnly ? "Done" : "Finish";
-        document.getElementById("qNext").disabled = !canAdvance();
-        document.getElementById("qFinish").disabled = !canAdvance();
-      }
-
-      function domainCount() {
-        return DOMAIN_IDS.filter(isDone).length;
-      }
-
-      function upcomingSurveys(fromId) {
-        const ids = CLUSTERS.flatMap((c) => c.surveys);
-        const remaining = ids.filter((id) => !isDone(id) && id !== fromId);
-        return remaining.slice(0, 3);
-      }
-
-      function renderMilestone(justFinishedId) {
-        const just = SURVEYS[justFinishedId];
-        const doneDomains = domainCount();
-        const current = activeCluster();
-        const pct = Math.round((doneDomains / 10) * 100);
-        const next = upcomingSurveys(justFinishedId);
-        const clusterNow = CLUSTERS.find((c) => c.surveys.includes(justFinishedId));
-        const clusterJustClosed = clusterNow && clusterComplete(clusterNow);
-        const allDone = !current;
-
-        const stepsHtml = CLUSTERS.map((c) => {
-          const status = clusterComplete(c) ? "done" : current && current.id === c.id ? "now" : "";
-          const label = clusterComplete(c) ? "Complete" : current && current.id === c.id ? "In progress" : "Coming up";
-          return `<div class="step"><div class="dot ${status}"></div><div><strong>${c.name}</strong><span>${label}</span></div></div>`;
-        }).join("");
-
-        const nextHtml = allDone
-          ? `<div class="next-card"><b>All 10 PROMIS domains complete</b><small>Your Guide is clear until the next scheduled check-in.</small></div>`
-          : next
-              .map((id) => {
-                const cluster = CLUSTERS.find((c) => c.surveys.includes(id));
-                return `<div class="next-card"><b>${SURVEYS[id].title}</b><small>Next in ${cluster.name}</small></div>`;
-              })
-              .join("");
-
-        document.getElementById("milestoneMount").innerHTML = `
-          <div class="confetti" id="confetti"></div>
-          <div class="ms-kicker">${clusterJustClosed ? clusterNow.name + " complete" : "Milestone"}</div>
-          <h2 class="ms-title">${allDone ? "LotusPROMIS-10 complete" : "Nice work"}</h2>
-          <p class="ms-copy">You finished <strong>${just.title}</strong>.${
-            clusterJustClosed && current ? ` ${current.name} is now unlocked on The Guide.` : ""
-          }</p>
-          <div class="ring-wrap">
-            <svg class="ring" viewBox="0 0 84 84">
-              <circle cx="42" cy="42" r="34" fill="none" stroke="#e2e8f0" stroke-width="8"/>
-              <circle cx="42" cy="42" r="34" fill="none" stroke="#008294" stroke-width="8"
-                stroke-linecap="round" transform="rotate(-90 42 42)"
-                stroke-dasharray="${2 * Math.PI * 34}" stroke-dashoffset="${2 * Math.PI * 34 * (1 - doneDomains / 10)}"/>
-              <text x="42" y="46" text-anchor="middle" font-size="16" font-weight="700" fill="#3d2c73">${doneDomains}/10</text>
-            </svg>
-            <div>
-              <strong>${doneDomains === 0 ? "10 domains ahead" : pct + "% of PROMIS domains"}</strong>
-              <p class="cluster-blurb" style="margin:4px 0 0">${
-                doneDomains === 0
-                  ? "Physical health is unlocked on The Guide."
-                  : "This milestone shows where you are and what is coming next."
-              }</p>
-            </div>
-          </div>
-          <h3 class="cluster-label">Your path</h3>
-          <div class="steps">${stepsHtml}</div>
-          <h3 class="cluster-label">${allDone ? "What’s next" : "Coming up"}</h3>
-          ${nextHtml}
-        `;
-        document.getElementById("msDone").textContent = allDone ? "Back to The Guide" : "Continue";
-        burstConfetti();
-      }
-
-      function burstConfetti() {
-        const wrap = document.getElementById("confetti");
-        if (!wrap) return;
-        const colors = ["#008294", "#65c4db", "#3d2c73", "#f59e0b", "#22c55e"];
-        for (let i = 0; i < 18; i++) {
-          const s = document.createElement("span");
-          s.style.left = 8 + Math.random() * 84 + "%";
-          s.style.background = colors[i % colors.length];
-          s.style.animationDelay = Math.random() * 0.4 + "s";
-          wrap.appendChild(s);
-        }
-      }
-
-      function finishForm() {
-        if (qViewOnly) {
-          go("home");
-          return;
-        }
-        state.completed[qId] = { at: new Date().toISOString(), answers: qAnswers };
-        delete state.progress[qId];
-        saveState();
-        go("milestone");
-        renderMilestone(qId);
-      }
-
-      document.querySelectorAll(".tab").forEach((tab) => {
-        tab.addEventListener("click", () => go(tab.dataset.tab === "settings" ? "settings" : "home"));
-      });
-
-      document.getElementById("qExit").addEventListener("click", () => {
-        persistProgress();
-        go("home");
-        renderHome();
-      });
-      document.getElementById("qPrev").addEventListener("click", () => {
-        if (qStep > 0) {
-          qStep -= 1;
-          persistProgress();
-          renderQuestion();
-        }
-      });
-      document.getElementById("qNext").addEventListener("click", () => {
-        if (!canAdvance()) return;
-        qStep += 1;
-        persistProgress();
-        renderQuestion();
-      });
-      document.getElementById("qFinish").addEventListener("click", finishForm);
-      document.getElementById("msDone").addEventListener("click", () => {
-        go("home");
-        renderHome();
-      });
-      document.getElementById("resetBtn").addEventListener("click", () => {
-        state = { completed: {}, progress: {} };
-        saveState();
-        toast("Demo reset");
-        go("home");
-        renderHome();
-      });
-      document.getElementById("joinLink").addEventListener("click", (e) => {
-        e.preventDefault();
-        toast("Join additional program is available in the live LotusLab app.");
-      });
-
-      const now = new Date();
-      document.getElementById("todayLabel").textContent = `Today ${String(now.getDate()).padStart(2, "0")}/${String(
-        now.getMonth() + 1
-      ).padStart(2, "0")}/${now.getFullYear()}`;
-
-      renderHome();
-    </script>
   </body>
 </html>
