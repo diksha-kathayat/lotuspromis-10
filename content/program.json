@@ -1,0 +1,423 @@
+{
+  "program": {
+    "name": "LotusPROMIS-10",
+    "code": "PROMIS10",
+    "tenant": "LotusLab",
+    "description": "A 10-domain PROMIS profile collected in context groups on The Guide, with a milestone after every survey.",
+    "program_info": "<h2>About LotusPROMIS-10</h2><p>LotusPROMIS-10 uses short Patient-Reported Outcomes Measurement Information System (PROMIS) forms covering physical, sleep, emotional, cognitive, and social health.</p><p>Surveys unlock in groups. After each survey you will see a milestone showing your progress and what comes next.</p>"
+  },
+  "clusters": [
+    {
+      "id": "intro",
+      "name": "Getting started",
+      "blurb": "A short welcome before your first PROMIS domains.",
+      "surveys": ["welcome"]
+    },
+    {
+      "id": "physical",
+      "name": "Physical health",
+      "blurb": "How your body is working, including pain.",
+      "surveys": ["physical-function", "pain-intensity", "pain-interference"]
+    },
+    {
+      "id": "energy",
+      "name": "Energy & sleep",
+      "blurb": "Tiredness and how sleep is affecting your days.",
+      "surveys": ["fatigue", "sleep-disturbance", "sleep-impairment"]
+    },
+    {
+      "id": "emotion",
+      "name": "Emotional health",
+      "blurb": "Anxiety and low mood over the past 7 days.",
+      "surveys": ["anxiety", "depression"]
+    },
+    {
+      "id": "life",
+      "name": "Thinking & social life",
+      "blurb": "Concentration, memory, and taking part in roles and activities.",
+      "surveys": ["cognitive", "social-roles"]
+    }
+  ],
+  "scales": {
+    "physicalFunction": [
+      { "id": 1, "text": "Without any difficulty", "score": 5 },
+      { "id": 2, "text": "With a little difficulty", "score": 4 },
+      { "id": 3, "text": "With some difficulty", "score": 3 },
+      { "id": 4, "text": "With much difficulty", "score": 2 },
+      { "id": 5, "text": "Unable to do", "score": 1 }
+    ],
+    "frequency": [
+      { "id": 1, "text": "Never", "score": 1 },
+      { "id": 2, "text": "Rarely", "score": 2 },
+      { "id": 3, "text": "Sometimes", "score": 3 },
+      { "id": 4, "text": "Often", "score": 4 },
+      { "id": 5, "text": "Always", "score": 5 }
+    ],
+    "intensity": [
+      { "id": 1, "text": "Not at all", "score": 1 },
+      { "id": 2, "text": "A little bit", "score": 2 },
+      { "id": 3, "text": "Somewhat", "score": 3 },
+      { "id": 4, "text": "Quite a bit", "score": 4 },
+      { "id": 5, "text": "Very much", "score": 5 }
+    ],
+    "sleepQuality": [
+      { "id": 1, "text": "Very poor", "score": 5 },
+      { "id": 2, "text": "Poor", "score": 4 },
+      { "id": 3, "text": "Fair", "score": 3 },
+      { "id": 4, "text": "Good", "score": 2 },
+      { "id": 5, "text": "Very good", "score": 1 }
+    ],
+    "socialRoles": [
+      { "id": 1, "text": "Never", "score": 5 },
+      { "id": 2, "text": "Rarely", "score": 4 },
+      { "id": 3, "text": "Sometimes", "score": 3 },
+      { "id": 4, "text": "Usually", "score": 2 },
+      { "id": 5, "text": "Always", "score": 1 }
+    ]
+  },
+  "questionnaires": [
+    {
+      "id": "welcome",
+      "title": "Welcome to LotusPROMIS-10",
+      "introduction_task": true,
+      "celebrate": true,
+      "confetti": true,
+      "celebrate_text": "<h2>You’re in</h2><p>LotusPROMIS-10 will now open in small groups, starting with physical health.</p>",
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "Welcome",
+          "description": "<h1>Welcome to LotusPROMIS-10</h1><p>This program collects a short snapshot of how you are feeling and functioning, using 10 widely used PROMIS domains.</p><h2>How it works</h2><ul><li>Surveys appear on <strong>The Guide</strong> in groups that belong together.</li><li>Finish a group and the next group unlocks.</li><li>After every survey you will see a <strong>milestone</strong> with your progress and what is coming next.</li></ul><p>Most domains take about <strong>1–2 minutes</strong>. There are no right or wrong answers — choose the option that feels closest.</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "Are you ready to start LotusPROMIS-10?",
+          "mandatory": true,
+          "options": [
+            { "id": 1, "text": "Yes, let’s begin" },
+            { "id": 2, "text": "I understand, start when I’m ready" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "physical-function",
+      "title": "Physical Function",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Physical Function</h1><p>These questions ask about your ability to carry out everyday physical activities.</p><h2>How to answer</h2><ul><li>There is <strong>no 7-day time window</strong> for this domain — answer based on how you are now.</li><li>If ability varies, choose the option that best matches a typical day.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "Are you able to do chores such as vacuuming or yard work?",
+          "scale": "physicalFunction"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "Are you able to go up and down stairs at a normal pace?",
+          "scale": "physicalFunction"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "Are you able to go for a walk of at least 15 minutes?",
+          "scale": "physicalFunction"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "Are you able to run errands and shop?",
+          "scale": "physicalFunction"
+        }
+      ]
+    },
+    {
+      "id": "pain-intensity",
+      "title": "Pain Intensity",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Pain Intensity</h1><p>This is a single 0–10 rating of pain, matching the PROMIS pain intensity item used in PROMIS profile instruments.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li><strong>0</strong> means no pain. <strong>10</strong> means the worst pain imaginable.</li></ul><p>1 question · under 1 minute</p>"
+        },
+        {
+          "type": "RangeSliderQuestion",
+          "title": "In the past 7 days, how would you rate your pain on average?",
+          "minimum": 0,
+          "maximum": 10,
+          "step": 1,
+          "minimum_label": "<em>No pain</em>",
+          "maximum_label": "<em>Worst imaginable pain</em>"
+        }
+      ]
+    },
+    {
+      "id": "pain-interference",
+      "title": "Pain Interference",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Pain Interference</h1><p>These questions ask how much pain got in the way of daily life.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>If you had no pain, choose <strong>Not at all</strong>.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how much did pain interfere with your day to day activities?",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how much did pain interfere with work around the home?",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how much did pain interfere with your ability to participate in social activities?",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how much did pain interfere with your household chores?",
+          "scale": "intensity"
+        }
+      ]
+    },
+    {
+      "id": "fatigue",
+      "title": "Fatigue",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Fatigue</h1><p>These questions ask about tiredness and feeling worn out — not only sleepiness.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>Include both how often and how strongly fatigue showed up.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I feel fatigued",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I have trouble starting things because I am tired",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how run-down did you feel on average?",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, how fatigued were you on average?",
+          "scale": "intensity"
+        }
+      ]
+    },
+    {
+      "id": "sleep-disturbance",
+      "title": "Sleep Disturbance",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Sleep Disturbance</h1><p>These questions ask about the <em>quality</em> of your sleep — falling asleep, staying asleep, and how refreshing sleep felt.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>Answer about sleep itself, not how sleepy you felt during the day (that is the next survey).</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, my sleep quality was",
+          "scale": "sleepQuality"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, my sleep was refreshing",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I had a problem with my sleep",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I had difficulty falling asleep",
+          "scale": "frequency"
+        }
+      ]
+    },
+    {
+      "id": "sleep-impairment",
+      "title": "Sleep-Related Impairment",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Sleep-Related Impairment</h1><p>These questions ask how sleep (or lack of it) affected your daytime functioning.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>Focus on daytime effects: concentration, irritability, getting things done.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I had a hard time getting things done because I was sleepy",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I had problems during the day because of poor sleep",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I had a hard time concentrating because of poor sleep",
+          "scale": "intensity"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt irritable because of poor sleep",
+          "scale": "intensity"
+        }
+      ]
+    },
+    {
+      "id": "anxiety",
+      "title": "Anxiety",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Anxiety</h1><p>These questions ask about fear, worry, and feeling on edge.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>Choose how often each statement was true for you.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt fearful",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I found it hard to focus on anything other than my anxiety",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, my worries overwhelmed me",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt uneasy",
+          "scale": "frequency"
+        }
+      ]
+    },
+    {
+      "id": "depression",
+      "title": "Depression",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Depression</h1><p>These questions ask about low mood, hopelessness, and feeling down.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>There are no right or wrong answers. If you are in distress, talk with your care team.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt worthless",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt helpless",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt depressed",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I felt hopeless",
+          "scale": "frequency"
+        }
+      ]
+    },
+    {
+      "id": "cognitive",
+      "title": "Cognitive Function",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Cognitive Function / Cognitive Concerns</h1><p>These questions ask about thinking, memory, concentration, and keeping track of what you are doing.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li>Answer about everyday thinking, not a formal memory test.</li></ul><p>4 questions · about 1 minute</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, my thinking has been slow",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, it has seemed like my brain was not working as well as usual",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I have had to work harder than usual to keep track of what I was doing",
+          "scale": "frequency"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "In the past 7 days, I have had trouble shifting back and forth between different activities that require thinking",
+          "scale": "frequency"
+        }
+      ]
+    },
+    {
+      "id": "social-roles",
+      "title": "Social Roles & Activities",
+      "celebrate": true,
+      "confetti": true,
+      "questions": [
+        {
+          "type": "Instruction",
+          "title": "About this survey",
+          "description": "<h1>Ability to Participate in Social Roles &amp; Activities</h1><p>These questions ask whether you could take part in family, work, leisure, and time with friends.</p><h2>How to answer</h2><ul><li>Think about the <strong>past 7 days</strong>.</li><li><strong>Never</strong> having trouble means you could do these activities as you wanted.</li></ul><p>4 questions · about 1 minute · last domain in LotusPROMIS-10</p>"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "I have trouble doing all of my regular leisure activities with others",
+          "scale": "socialRoles"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "I have trouble doing all of the family activities that I want to do",
+          "scale": "socialRoles"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "I have trouble doing all of my usual work (include work at home)",
+          "scale": "socialRoles"
+        },
+        {
+          "type": "SingleChoiceQuestion",
+          "title": "I have trouble doing all of the activities with friends that I want to do",
+          "scale": "socialRoles"
+        }
+      ]
+    }
+  ]
+}
