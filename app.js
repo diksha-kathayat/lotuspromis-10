@@ -83,12 +83,6 @@ const SURVEYS = {
         type: "questions",
         items: [
           {
-            type: "single",
-            title: "Are you ready to start LotusPROMIS-10?",
-            options: ["Yes, let’s begin", "I understand — start when I’m ready"],
-            mandatory: true,
-          },
-          {
             type: "text",
             title: "Anything your care team should know before you begin?",
             optional: true,

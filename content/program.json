@@ -88,15 +88,6 @@
           "type": "Instruction",
           "title": "Welcome",
           "description": "<h1>Welcome to LotusPROMIS-10</h1><p>This program collects a short snapshot of how you are feeling and functioning, using 10 widely used PROMIS domains.</p><h2>How it works</h2><ul><li>Surveys appear on <strong>The Guide</strong> in groups that belong together.</li><li>Finish a group and the next group unlocks.</li><li>After every survey you will see a <strong>milestone</strong> with your progress and what is coming next.</li></ul><p>Most domains take about <strong>1–2 minutes</strong>. There are no right or wrong answers — choose the option that feels closest.</p>"
-        },
-        {
-          "type": "SingleChoiceQuestion",
-          "title": "Are you ready to start LotusPROMIS-10?",
-          "mandatory": true,
-          "options": [
-            { "id": 1, "text": "Yes, let’s begin" },
-            { "id": 2, "text": "I understand, start when I’m ready" }
-          ]
         }
       ]
     },
