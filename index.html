@@ -29,7 +29,7 @@
         --danger: #dc2626;
         --font: Inter, system-ui, sans-serif;
         --heading-font: Inter, system-ui, sans-serif;
-        --tabbar-h: 64px;
+        --tabbar-h: 56px;
         --toolbar-h: 44px;
         --status-h: 54px;
         --home-indicator-h: 21px;
@@ -54,9 +54,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        gap: 16px;
-        padding: 28px 16px;
+        justify-content: flex-start;
+        gap: 8px;
+        padding: 8px 16px 12px;
         min-height: 100vh;
         min-height: 100dvh;
       }
@@ -76,13 +76,13 @@
       }
 
       .phone {
+        --phone-h: min(844px, calc(100dvh - 24px));
         position: relative;
-        width: 430px;
-        height: 932px;
-        max-width: 100%;
+        height: var(--phone-h);
+        width: min(390px, calc(var(--phone-h) * 390 / 844), 100%);
         background: #0a0a0a;
-        border-radius: 55px;
-        padding: 12px;
+        border-radius: 48px;
+        padding: 10px;
         box-shadow:
           0 0 0 1px rgba(255, 255, 255, 0.08) inset,
           0 24px 48px rgba(0, 0, 0, 0.28);
@@ -318,19 +318,22 @@
       }
 
       .tabbar {
-        position: relative;
-        left: auto;
-        right: auto;
-        bottom: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
         height: calc(var(--tabbar-h) + var(--home-indicator-h));
-        padding: 8px 24px var(--home-indicator-h);
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        background: var(--white);
-        border-top: 1px solid var(--line);
-        z-index: 20;
-        flex-shrink: 0;
+        padding: 4px 6px 16px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+        background: #fff;
+        border-top: 1px solid #d0d7de;
+        z-index: 25;
+      }
+
+      .tabbar[hidden] {
+        display: none;
       }
 
       .tab {
@@ -339,18 +342,32 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 4px;
-        color: #94a3b8;
-        font-size: 11px;
-        font-weight: 500;
+        justify-content: center;
+        gap: 2px;
+        color: #334155;
+        font-size: 12px;
+        font-weight: 600;
         cursor: pointer;
-        min-width: 64px;
-        padding-top: 4px;
+        padding: 0 4px;
         font-family: inherit;
+        line-height: 1.15;
+        -webkit-text-fill-color: currentColor;
+      }
+
+      .tab svg {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
       }
 
       .tab.active {
         color: var(--primary);
+      }
+
+      #screen-home,
+      #screen-info,
+      #screen-settings {
+        padding-bottom: calc(var(--tabbar-h) + var(--home-indicator-h));
       }
 
       .empty {
@@ -961,9 +978,6 @@
       .faq-a p:last-child {
         margin-bottom: 0;
       }
-        border-bottom: 1px solid var(--line);
-        font-weight: 500;
-      }
 
       .toast {
         position: absolute;
@@ -983,6 +997,15 @@
         display: block;
       }
 
+      @media (max-height: 920px) {
+        .caption {
+          display: none;
+        }
+        .phone {
+          --phone-h: min(844px, calc(100dvh - 16px));
+        }
+      }
+
       @media (max-width: 480px) {
         body {
           padding: 0;
@@ -992,6 +1015,7 @@
           display: none;
         }
         .phone {
+          --phone-h: 100dvh;
           width: 100%;
           height: 100dvh;
           border-radius: 0;
@@ -1004,6 +1028,15 @@
         }
         .dynamic-island {
           display: none;
+        }
+        .tabbar {
+          padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+          height: calc(var(--tabbar-h) + max(16px, env(safe-area-inset-bottom, 16px)));
+        }
+        #screen-home,
+        #screen-info,
+        #screen-settings {
+          padding-bottom: calc(var(--tabbar-h) + max(16px, env(safe-area-inset-bottom, 16px)));
         }
       }
     </style>
@@ -1036,7 +1069,6 @@
             </main>
           </div>
           <p class="join-footer">Join additional program? Click <a href="#" id="joinLink">here</a></p>
-          <nav class="tabbar" data-tabbar="home"></nav>
         </section>
 
 
@@ -1059,7 +1091,6 @@
               <div id="faqMount"></div>
             </main>
           </div>
-          <nav class="tabbar" data-tabbar="info"></nav>
         </section>
 
         <section class="screen" data-screen="settings" id="screen-settings">
@@ -1076,7 +1107,6 @@
               <button class="btn ghost" id="resetBtn" type="button">Reset LotusPROMIS-10 demo</button>
             </main>
           </div>
-          <nav class="tabbar" data-tabbar="settings"></nav>
         </section>
 
         <section class="screen" data-screen="questionnaire" id="screen-questionnaire">
@@ -1102,6 +1132,20 @@
           </div>
         </section>
 
+        <nav class="tabbar" id="appTabbar" aria-label="Main">
+          <button class="tab active" type="button" data-tab="home">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>
+            The Guide
+          </button>
+          <button class="tab" type="button" data-tab="info">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M2 12C2 6.473 6.473 2 12 2s10 4.473 10 10-4.473 10-10 10S2 17.527 2 12zm2 0c0 4.663 3.336 8 8 8 4.663 0 8-3.336 8-8 0-4.663-3.336-8-8-8-4.663 0-8 3.336-8 8zm6.5-3.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM11 12a1 1 0 112 0v4a1 1 0 11-2 0v-4z"/></svg>
+            Information
+          </button>
+          <button class="tab" type="button" data-tab="settings">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9c.2.6.8 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>
+            Settings
+          </button>
+        </nav>
         <div class="home-indicator"></div>
         <div class="toast" id="toast"></div>
       </div>

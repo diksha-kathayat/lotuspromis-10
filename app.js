@@ -422,6 +422,8 @@ function go(name) {
   document.querySelectorAll(".screen").forEach((el) => el.classList.remove("active"));
   document.getElementById("screen-" + name).classList.add("active");
   document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
+  const tabbar = document.getElementById("appTabbar");
+  if (tabbar) tabbar.hidden = name === "questionnaire";
 }
 
 function toast(msg) {
@@ -789,26 +791,6 @@ function finishForm() {
   go("home");
   renderHome();
 }
-
-const TAB_ICONS = {
-  home: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z"/></svg>',
-  info: '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M2 12C2 6.473 6.473 2 12 2s10 4.473 10 10-4.473 10-10 10S2 17.527 2 12zm2 0c0 4.663 3.336 8 8 8 4.663 0 8-3.336 8-8 0-4.663-3.336-8-8-8-4.663 0-8 3.336-8 8zm6.5-3.5a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM11 12a1 1 0 112 0v4a1 1 0 11-2 0v-4z"/></svg>',
-  settings:
-    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1-.1a1.7 1.7 0 0 0-.3 1.8V9c.2.6.8 1 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>',
-};
-
-function tabbarHtml(active) {
-  return ["home", "info", "settings"]
-    .map((id) => {
-      const label = id === "home" ? "The Guide" : id === "info" ? "Information" : "Settings";
-      return `<button class="tab${active === id ? " active" : ""}" data-tab="${id}">${TAB_ICONS[id]}${label}</button>`;
-    })
-    .join("");
-}
-
-document.querySelectorAll("[data-tabbar]").forEach((el) => {
-  el.innerHTML = tabbarHtml(el.dataset.tabbar);
-});
 
 document.body.addEventListener("click", (e) => {
   const tab = e.target.closest(".tab");
